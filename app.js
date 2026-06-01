@@ -16,7 +16,7 @@
     function updateTime() {
       // BUG: Uses user's local timezone, not San Francisco's timezone
       const now = new Date();
-      timeEl.textContent = "Local time in San Francisco: " + now.toLocaleTimeString();
+      timeEl.textContent = "Local time in San Francisco: " + now.toLocaleTimeString(undefined, { timeZone: "America/Los_Angeles", hour: "numeric", minute: "2-digit", second: "2-digit" });
     }
 
     async function getWeather() {
@@ -24,7 +24,7 @@
         // BUG: Longitude is slightly wrong
         const lat = 37.7749;
         const lon = -122.4194;
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&temperature_unit=fahrenheit&wind_speed_unit=mph`;
 
         const response = await fetch(url);
         if (!response.ok) {
