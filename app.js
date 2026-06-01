@@ -23,8 +23,7 @@
       try {
         // BUG: Longitude is slightly wrong
         const lat = 37.7749;
-        const lon = -122.3194;
-
+        const lon = -122.4194;
         const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
 
         const response = await fetch(url);
